@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predicción de Juegos con IA - Argentina</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .console-box {
+      font-family: monospace;
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px #00ff88;
+      color: #00ff88;
+      height: 250px;
+      overflow-y: auto;
+    }
+    .loading-screen {
+      font-family: monospace;
+      background: #000;
+      color: #00ff88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      z-index: 50;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .hidden-screen {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <div id="loading" class="loading-screen">
+    <p>Cargando... Por favor espera mientras preparamos tu experiencia.</p>
+  </div>
+
+  <div id="mainContent" class="hidden-screen">
+    <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-green-400">1xBet Predictor IA</h1>
+      <nav class="space-x-4">
+        <a href="#how" class="hover:text-green-400">Cómo Funciona</a>
+        <a href="#games" class="hover:text-green-400">Juegos</a>
+        <a href="#start" class="hover:text-green-400">Comenzar</a>
+      </nav>
+    </header>
+
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">Ganá Dinero Real con Predicciones IA</h2>
+      <p class="max-w-xl mb-8 text-gray-300">Unite a miles de argentinos usando nuestra IA para ganar en juegos como Aviator, Mines y Penalty. ¡98% de precisión en señales, predicciones en tiempo real y retiros rápidos!</p>
+      <button id="startButton" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition">Empezá Ahora</button>
+      <div id="errorBox" class="hidden bg-red-600 p-6 rounded-xl max-w-md mx-auto mt-6">
+        <h2 class="text-xl font-bold mb-2">⚠️ Cuenta No Encontrada</h2>
+        <p class="mb-4">Parece que aún no estás registrado. Creá una cuenta en 1xBet y realizá un depósito para acceder a las predicciones.</p>
+        <p class="text-lg mb-4 text-yellow-400">Usá este código promocional: <strong>ARG2025</strong></p>
+        <a href="https://affpa.top/L?tag=d_3316638m_14189c_&site=3316638&ad=14189&r=registration" target="_blank" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition">
+          Registrate en 1xBet
+        </a>
+      </div>
+    </section>
+
+    <section class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Ganadores del Día (AR$)</h3>
+      <div class="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto text-sm text-green-300">
+        <p>👤 Usuario ID: 1218473422 – AR$275,328</p>
+        <p>👤 Usuario ID: 9912384741 – AR$221,900</p>
+        <p>👤 Usuario ID: 3099234822 – AR$184,120</p>
+        <p>👤 Usuario ID: 1187339121 – AR$150,000</p>
+        <p>👤 Usuario ID: 4412900113 – AR$132,850</p>
+        <p>👤 Usuario ID: 8283721091 – AR$128,440</p>
+        <p>👤 Usuario ID: 7751937742 – AR$100,705</p>
+        <p>👤 Usuario ID: 5554921811 – AR$98,330</p>
+        <p>👤 Usuario ID: 1983238742 – AR$85,000</p>
+        <p>👤 Usuario ID: 3377749301 – AR$79,210</p>
+      </div>
+    </section>
+
+    <section id="games" class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Juegos Compatibles</h3>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🎮 Aviator</h4>
+          <p class="text-gray-300">Predecí cuándo retirar antes de que el avión se vaya. Nuestra IA detecta tendencias en tiempo real.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">💣 Mines</h4>
+          <p class="text-gray-300">Evitá las bombas y acumulá ganancias. El sistema detecta caminos de bajo riesgo y alto beneficio.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🥅 Penalty</h4>
+          <p class="text-gray-300">Elegí dónde patear o atajar. Ganale al arquero con predicciones basadas en datos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="bg-gray-900 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">Cómo Funciona</h3>
+      <div class="max-w-3xl mx-auto space-y-4 text-gray-300">
+        <p>📡 Nuestra IA analiza datos en vivo y resultados históricos 24/7.</p>
+        <p>💡 Detecta patrones que llevan a ganancias constantes.</p>
+        <p>📲 Recibís predicciones en tiempo real — directo en tu dispositivo.</p>
+      </div>
+    </section>
+
+    <section class="bg-black py-12 px-6 text-center">
+      <h3 class="text-xl font-bold text-green-400 mb-4">[ Consola de Monitoreo ]</h3>
+      <div class="console-box max-w-3xl mx-auto text-left" id="console">
+        <p>[INFO] Servicio de predicción activo ✅</p>
+      </div>
+    </section>
+
+    <footer class="text-center text-gray-500 text-sm py-6">
+      © 2025 Predictor IA. No afiliado con 1xBet. Usalo con responsabilidad.
+    </footer>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("loading").classList.add("hidden-screen");
+      document.getElementById("mainContent").classList.remove("hidden-screen");
+    }, 3000);
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      document.getElementById("errorBox").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
